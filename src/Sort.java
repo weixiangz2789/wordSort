@@ -51,9 +51,9 @@ public class Sort {
     // PART B.  Sorting a 1000-word list!
     public static void selectionSortWordList(ArrayList<String> words) {
         int count = 0;
-        for (int j = 0; j < words.size()-1; j++) {
+        for (int j = 0; j < words.size(); j++) {
             int minIndex = j;
-            for (int k = j + 1; k < words.size(); k++) {
+            for (int k = j; k < words.size(); k++) {
                 count ++;
                 if (words.get(k).compareTo(words.get(minIndex)) < 0) {
                     minIndex = k;
@@ -67,6 +67,17 @@ public class Sort {
     }
 
     public static void insertionSortWordList(ArrayList<String> words) {
-        /* TO BE IMPLEMENTED IN PART B */
+        int count = 0;
+        for (int j = 1; j < words.size(); j++) {
+            String temp = words.get(j);
+            int possibleIndex = j;
+            while (possibleIndex > 0 && temp.compareTo(words.get(possibleIndex - 1)) < 0) {
+                count ++;
+                words.set(possibleIndex, words.get(possibleIndex-1));
+                possibleIndex--;
+            }
+            words.set(possibleIndex, temp);
+        }
+        System.out.println(count);
     }
 }
